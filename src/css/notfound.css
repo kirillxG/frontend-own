@@ -1,0 +1,39 @@
+.notFound {
+  min-height: calc(100vh - 72px); /* header height */
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.notFoundInner {
+  max-width: 520px;
+  text-align: center;
+  background: rgba(16, 18, 24, 0.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 22px;
+}
+
+.notFoundInner h1 {
+  margin: 14px 0 10px;
+  font-size: 36px;
+  letter-spacing: -0.6px;
+}
+
+.nfSub {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+.nfActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .nfActions {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,107 @@
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.brand {
+  font-weight: 650;
+  letter-spacing: 0.2px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(16, 18, 24, 0.8);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pill.small {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(16, 18, 24, 0.7);
+  color: var(--text);
+  transition:
+    transform var(--t-fast) ease,
+    background var(--t-med) ease,
+    border-color var(--t-med) ease;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(20, 23, 36, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btnPrimary {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 92, 255, 0.95),
+    rgba(154, 134, 255, 0.85)
+  );
+  border-color: rgba(124, 92, 255, 0.35);
+}
+.btnPrimary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 92, 255, 1),
+    rgba(154, 134, 255, 0.95)
+  );
+  border-color: rgba(124, 92, 255, 0.55);
+}
+
+.btnSecondary {
+  background: rgba(16, 18, 24, 0.85);
+}
+
+.btnGhost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+.btnGhost:hover {
+  background: rgba(16, 18, 24, 0.65);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btnBlock {
+  width: 100%;
+}
+
+/* Links */
+.link {
+  color: rgba(154, 134, 255, 0.95);
+}
+.link:hover {
+  color: rgba(154, 134, 255, 1);
+}
