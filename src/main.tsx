@@ -12,6 +12,9 @@ import NotAuthorizedPage from "./pages/NotAuthorizedPage";
 import HomePage from "./pages/HomePage";
 import TopicsPage from "./pages/TopicPage.tsx";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage.tsx";
+import LogoutPage from "./pages/auth/LogoutPage.tsx";
+import { AuthProvider } from "./providers/AuthContext.tsx";
+import SettingsPage from "./pages/SettingsPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +24,10 @@ const router = createBrowserRouter([
       { path: "/home", element: <HomePage /> },
       { path: "/topics", element: <TopicsPage /> },
       { path: "/login", element: <LoginPage /> },
+      { path: "/logout", element: <LogoutPage /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/forgotpassword", element: <ForgotPasswordPage /> },
+      { path: "/settings", element: <SettingsPage /> },
       { path: "/notauthorized", element: <NotAuthorizedPage /> },
       { path: "*", element: <NotFound /> },
     ],
@@ -31,6 +36,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );

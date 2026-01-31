@@ -1,0 +1,118 @@
+.settingsPage {
+  min-height: calc(100vh - 72px);
+  padding: 26px 20px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.settingsMain {
+  width: clamp(320px, 70vw, 900px);
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.settingsHeader {
+  display: grid;
+  gap: 6px;
+}
+
+.settingsTitle {
+  margin: 6px 0 0;
+  font-size: 34px;
+  letter-spacing: -0.6px;
+  line-height: 1.05;
+}
+
+.settingsSub {
+  margin: 0;
+  color: var(--muted);
+}
+
+.settingsCard {
+  background: rgba(16, 18, 24, 0.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px; /* gives space so logout sits at bottom */
+}
+
+.settingsSection {
+  display: grid;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.sectionBody {
+  display: grid;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(11, 12, 15, 0.28);
+}
+
+.rowLabel {
+  font-weight: 700;
+}
+
+.rowHint {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(11, 12, 15, 0.28);
+}
+
+.btnSm {
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-weight: 650;
+}
+
+.settingsSpacer {
+  flex: 1;
+}
+
+.settingsBottom {
+  padding-top: 10px;
+}
+
+.logoutBtn {
+  border-color: rgba(255, 77, 77, 0.18);
+  color: rgba(255, 130, 130, 0.9);
+}
+
+.logoutBtn:hover {
+  border-color: rgba(255, 77, 77, 0.35);
+  background: rgba(255, 77, 77, 0.08);
+  color: rgba(255, 170, 170, 0.95);
+}
+
+@media (max-width: 980px) {
+  .settingsMain {
+    width: 100%;
+  }
+}

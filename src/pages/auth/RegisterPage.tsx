@@ -11,6 +11,14 @@ type RegisterData = {
   user?: { id: string; username?: string };
 };
 
+const base = import.meta.env.VITE_API_BASE ?? "/v1";
+const opts = (method: string, body?: any) => ({
+  method,
+  credentials: "include" as const,
+  headers: body ? { "Content-Type": "application/json" } : undefined,
+  body: body ? JSON.stringify(body) : undefined,
+});
+
 function extractErrorMessage(err: any): string {
   if (!err) return "Request failed.";
   if (typeof err === "string") return err;
@@ -61,12 +69,10 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ username: u, password }),
-      });
+      const res = await fetch(
+        `${base}/auth/register`,
+        opts("POST", { loginName: u, password }),
+      );
 
       const json = (await res.json().catch(() => null)) as
         | ApiOk<RegisterData>
@@ -83,11 +89,7 @@ export default function RegisterPage() {
         throw new Error("Registration failed.");
       }
 
-      const data = json.data;
-      const token = data.token ?? data.accessToken;
-      if (token) localStorage.setItem("auth_token", token);
-
-      navigate("/", { replace: true });
+      navigate("/login", { replace: true });
     } catch (err: any) {
       setError(err?.message || "Registration failed.");
     } finally {
@@ -116,7 +118,7 @@ export default function RegisterPage() {
           <form className="form" onSubmit={onSubmit}>
             <div className="field">
               <label className="label" htmlFor="username">
-                Username
+                Login name
               </label>
               <input
                 className="input"

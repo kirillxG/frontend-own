@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="18" y1="10" x2="110" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7c5cff"></stop>
+      <stop offset="1" stop-color="#9a86ff"></stop>
+    </linearGradient>
+    <radialGradient id="glow" cx="28" cy="18" r="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.35"></stop>
+      <stop offset="0.55" stop-color="#7c5cff" stop-opacity="0.08"></stop>
+      <stop offset="1" stop-color="#0b0c0f" stop-opacity="0"></stop>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.9" result="b"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="b"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect x="6" y="6" width="116" height="116" rx="26" fill="#0b0c0f"></rect>
+  <rect x="6" y="6" width="116" height="116" rx="26" fill="url(#glow)"></rect>
+
+  <!-- subtle border -->
+  <rect x="8.5" y="8.5" width="111" height="111" rx="23.5" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"></rect>
+
+  <!-- K mark -->
+  <g filter="url(#soft)">
+    <!-- left stem -->
+    <path d="M42 34
+             C42 31.8 43.8 30 46 30
+             H52
+             C54.2 30 56 31.8 56 34
+             V94
+             C56 96.2 54.2 98 52 98
+             H46
+             C43.8 98 42 96.2 42 94
+             Z" fill="url(#g)"></path>
+
+    <!-- upper arm -->
+    <path d="M58 64 L88 34
+             C89.6 32.4 92.2 32.4 93.8 34
+             L98 38.2
+             C99.6 39.8 99.6 42.4 98 44
+             L74 68
+             Z" fill="url(#g)"></path>
+
+    <!-- lower arm -->
+    <path d="M58 64 L74 60 L98 84
+             C99.6 85.6 99.6 88.2 98 89.8
+             L93.8 94
+             C92.2 95.6 89.6 95.6 88 94
+             L58 64
+             Z" fill="url(#g)"></path>
+  </g>
+</svg>

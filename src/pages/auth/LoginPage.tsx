@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../css/auth.css";
+import { useAuth } from "../../providers/AuthContext";
 
 type ApiOk<T> = { data: T };
 type ApiErr = { error: any };
@@ -10,6 +11,14 @@ type LoginData = {
   accessToken?: string;
   user?: { id: string; username?: string; email?: string };
 };
+
+const base = import.meta.env.VITE_API_BASE ?? "/v1";
+const opts = (method: string, body?: any) => ({
+  method,
+  credentials: "include" as const,
+  headers: body ? { "Content-Type": "application/json" } : undefined,
+  body: body ? JSON.stringify(body) : undefined,
+});
 
 function extractErrorMessage(err: any): string {
   if (!err) return "Request failed.";
@@ -27,7 +36,7 @@ function extractErrorMessage(err: any): string {
 export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as any)?.from ?? "/";
+  const from = (location.state as any)?.from ?? "/home";
 
   const [identifier, setIdentifier] = useState(""); // email OR username
   const [password, setPassword] = useState("");
@@ -36,24 +45,24 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const { refreshUser } = useAuth();
+
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
 
     const id = identifier.trim();
     if (!id || !password) {
-      setError("Username/email and password are required.");
+      setError("Login name/email and password are required.");
       return;
     }
 
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ identifier: id, password, remember }), // backend should accept identifier
-      });
+      const res = await fetch(
+        `${base}/auth/login`,
+        opts("POST", { identifier, password, remember }),
+      );
 
       const json = (await res.json().catch(() => null)) as
         | ApiOk<LoginData>
@@ -70,9 +79,7 @@ export default function LoginPage() {
         throw new Error("Login failed.");
       }
 
-      const data = json.data;
-      const token = data.token ?? data.accessToken;
-      if (token) localStorage.setItem("auth_token", token);
+      await refreshUser();
 
       navigate(from, { replace: true });
     } catch (err: any) {
@@ -101,7 +108,7 @@ export default function LoginPage() {
           <form className="form" onSubmit={onSubmit}>
             <div className="field">
               <label className="label" htmlFor="identifier">
-                Username or email
+                Login name or email
               </label>
               <input
                 className="input"

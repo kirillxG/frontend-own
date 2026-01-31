@@ -30,7 +30,7 @@ export default function ForgotPasswordPage() {
 
     const id = identifier.trim();
     if (!id) {
-      setError("Enter your username or email.");
+      setError("Enter your login name or email.");
       return;
     }
 
@@ -71,7 +71,7 @@ export default function ForgotPasswordPage() {
             <p className="pill">Recovery</p>
             <h1>Forgot password</h1>
             <p className="authSub">
-              Enter your username or email. If an account exists, you’ll get a
+              Enter your login name or email. If an account exists, you’ll get a
               reset link.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function ForgotPasswordPage() {
             <form className="form" onSubmit={onSubmit}>
               <div className="field">
                 <label className="label" htmlFor="identifier">
-                  Username or email
+                  login name or email
                 </label>
                 <input
                   className="input"

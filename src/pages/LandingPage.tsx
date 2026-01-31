@@ -61,15 +61,11 @@ export default function LandingPage() {
                 </div>
                 <div className="row">
                   <span className="rowKey">Auth</span>
-                  <span className="rowVal">bcrypt + secure cookies</span>
+                  <span className="rowVal">argon2 + secure cookies</span>
                 </div>
                 <div className="row">
                   <span className="rowKey">Reverse proxy</span>
                   <span className="rowVal">Nginx</span>
-                </div>
-                <div className="row">
-                  <span className="rowKey">Containers</span>
-                  <span className="rowVal">Docker</span>
                 </div>
                 <div className="row">
                   <span className="rowKey">Frontend</span>
@@ -107,7 +103,7 @@ export default function LandingPage() {
             </div>
             <div className="feature">
               <h3>Password hashing</h3>
-              <p>bcrypt-based credential storage and verification.</p>
+              <p>argon2-based credential storage and verification.</p>
             </div>
             <div className="feature">
               <h3>Defense-in-depth</h3>
